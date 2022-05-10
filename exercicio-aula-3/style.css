@@ -1,0 +1,36 @@
+html {
+  font-family: sans-serif;
+  font-size: 1rem;
+}
+
+form {
+  background-color: blanchedalmond;
+  border: 2px solid goldenrod;
+  width: 60%;
+  margin: 0 auto;
+  padding: 50px;
+  border-radius: 5px;
+  box-shadow: 0px 10px 10px rgb(166, 43, 43, 0.2);
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: brown;
+}
+
+input[type=submit] {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+}
+
+.field {
+  background-color: beige;
+  border: 2px solid burlywood;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  color: brown;
+}
