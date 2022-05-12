@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercicio 1.5.1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="report">
+    <section class="report__input">
+      <span class="title">Inserir Pontos</span>
+      <div class="report__input--container">
+
+        <div class="name--container">
+          <span>Aluno</span>
+          <input type="text" id="name" placeholder="Stephanie">
+        </div>
+
+        <span class="grade--title">Pontuacao</span>
+
+        <div class="html--container">
+          <span>HTML</span>
+          <input type="number" id="grade-html" min="0" max="100" placeholder="90">
+        </div>
+
+        <div class="css--container">
+          <span>CSS</span>
+          <input type="number" id="grade-css" min="0" max="100" placeholder="90">
+        </div>
+
+        <div class="js--container">
+          <span>JavaScript</span>
+          <input type="number" id="grade-js" min="0" max="100" placeholder="90">
+        </div>
+
+        <div class="button--container">
+          <button>Adicionar</button>
+        </div>
+      </div>
+    </section>
+    
+    <section class="report__report">
+      <span class="title">Notas</span>
+      <table>
+        <thead>
+          <tr>
+            <tr>Aluno</tr>
+            <tr>Total</tr>
+            <tr>Media</tr>
+            <tr>Resultado</tr>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>Tatal</td>
+            <td>Average</td>
+            <td>Result</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+html {
+  font-family: sans-serif;
+}
+
+.report {
+  background-color: #eeeeee;
+  width: 80%;
+  margin: 0 auto;
+  padding: 3%;
+}
+
+.title {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+span:not(.title) {
+  display: block;
+  text-align: center;
+  background-color: #e6e5e5;
+}
+
+.report__input--container {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "name title title title"
+    "name html css js"
+    "button button button button";
+}
+
+.name--container {
+  grid-area: name;
+}
+.grade--title {
+  grid-area: title;
+}
+.html--container {
+  grid-area: html;
+}
+.css--container {
+  grid-area: css;
+}
+.js--container {
+  grid-area: js;
+}
+.button--container {
+  grid-area: button;
+}
+
+.report__input--container input {
+  width: 80%;
+}

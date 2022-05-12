@@ -1,0 +1,70 @@
+#header {
+  border: 2px solid rgb(240, 240, 240);
+  background-color: #fff;
+  padding: 2%;
+  margin-bottom: 10px;
+  padding: 2%;
+}
+#header:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.corpo,
+.rodape {
+  border: 2px solid rgb(240, 240, 240);
+  padding: 2%;
+}
+
+.corpo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, auto);
+  grid-template-areas: 
+    "title title"
+    "link link"
+    "avatar soft"
+    "table table"
+    "audio video"
+    "footer footer";
+  gap: 10px;
+}
+
+.page-title {
+  grid-area: title;
+}
+a[href="#paragrafo3"] {
+  grid-area: link;
+}
+.softwares {
+  grid-area: soft;
+}
+.avatar {
+  grid-area: avatar;
+}
+.table-container {
+  grid-area: table;
+}
+.audio {
+  grid-area: audio;
+}
+.video {
+  grid-area: video;
+}
+.rodape {
+  grid-area: footer;
+}
+
+a[href="#paragrafo3"] {
+  display: block;
+  border: 2px solid rgb(220, 220, 220);
+  background-color: rgb(240, 240, 240);
+  color: rgb(130, 130, 130);
+  padding: 1rem;
+  transition: color 100ms ease;
+}
+
+a[href="#paragrafo3"]:hover,
+a[href="#paragrafo3"]:focus,
+a[href="#paragrafo3"]:focus-visible {
+  color: black;
+}
