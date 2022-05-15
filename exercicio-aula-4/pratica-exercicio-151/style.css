@@ -2,11 +2,27 @@ html {
   font-family: sans-serif;
 }
 
+button {
+  border: none;
+  background-color: black;
+  color: #fff;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border-radius: 0.3em;
+  transition: all 300ms ease;
+}
+
+button:hover {
+  color: #fff;
+  background-color: #5c5c5c;
+}
+
 .report {
   background-color: #eeeeee;
   width: 80%;
   margin: 0 auto;
   padding: 3%;
+  border-radius: 0.3em;
 }
 
 .title {
@@ -15,29 +31,43 @@ html {
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.05em;
+  margin-bottom: 1em;
 }
 
-span:not(.title) {
-  display: block;
-  text-align: center;
-  background-color: #e6e5e5;
+/* Report input */
+.report__input {
+  margin-bottom: 2em;
 }
 
 .report__input--container {
   display: grid;
-  grid-template-columns: 1.5fr repeat(3, 1fr);
-  grid-template-rows: repeat(3, auto);
+  grid-template-columns: 1fr repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
   grid-template-areas:
-    "name title title title"
+    "title-n grade grade grade"
+    "title-n title-html title-css title-js"
     "name html css js"
     "button button button button";
+    gap: 0.3em;
 }
 
+.title-name {
+  grid-area: title-n;
+}
+.title--grade {
+  grid-area: grade;
+}
+.title--html {
+  grid-area: title-html;
+}
+.title--css {
+  grid-area: title-css;
+}
+.title--js {
+  grid-area: title-js;
+}
 .name--container {
   grid-area: name;
-}
-.grade--title {
-  grid-area: title;
 }
 .html--container {
   grid-area: html;
@@ -52,6 +82,57 @@ span:not(.title) {
   grid-area: button;
 }
 
-.report__input--container input {
+.report__input--container > * {
+  background-color: #e6e5e5;
+  padding: 0.5em 0;
+}
+
+span:not(.title) {
+  display: block;
+  text-align: center;
+}
+
+.name--container,
+.html--container,
+.css--container,
+.js--container {
+  display: flex;
+  justify-content: center;
+}
+
+input {
   width: 80%;
+  border: 2px solid #fff;
+  border-radius: 0.3em;
+}
+
+.button--container {
+  text-align: center;
+}
+
+/* Report list */
+.report__report--results {
+  width: 100%;
+}
+
+.report__report--results th {
+  background-color: #b8b8b8;
+}
+
+.report__report--results td {
+  background-color: #fff;
+  padding: 0.2em 0.5em;
+}
+
+.report__report--results tr td:not(:first-child) {
+  text-align: center;
+}
+
+.report__report .button--container {
+  margin-top: 2em;
+}
+
+.button__localsave {
+  background-color: #e6e5e5;
+  color: #5c5c5c;
 }
