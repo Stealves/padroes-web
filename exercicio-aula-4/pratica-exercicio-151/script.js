@@ -18,6 +18,12 @@ function getReport() {
 }
 
 function addReport() {
+  // for (let i = 0; i < infoInput.length; i++) {
+  //   if (infoInput[i].value == null) {
+  //     alert("Preencha todos os campos");
+  //     return;
+  //   }
+  // }
   // Calculate total and average
   let gradeTotal = sumTotal(grade);
   let gradeAverage = Math.floor(sumTotal(grade)/ grade.length);
@@ -42,6 +48,11 @@ function addReport() {
   
   // Show new report in UI
   tableReport.appendChild(tr);
+
+  // Clean input
+  for (let i = 0; i < infoInput.length; i++) {
+    infoInput[i].value = "";
+  }
 }
 
 // Save in local Storage

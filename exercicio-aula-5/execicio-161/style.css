@@ -1,0 +1,11 @@
+.meme-list__item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  padding: 0;
+  list-style: none;
+  max-width: 100%;
+}
+
+img {
+  max-width: 100%;
+}
