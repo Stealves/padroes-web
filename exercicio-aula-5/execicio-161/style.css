@@ -1,11 +1,44 @@
-.meme-list__item {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  padding: 0;
-  list-style: none;
-  max-width: 100%;
+html {
+  font-family: sans-serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: gainsboro;
+}
+
+thead {
+  text-align: left;
+  color: gay;
+  border-bottom: 2px solid gray;
+}
+
+thead th,
+tbody td {
+  padding: 10px;
+}
+
+tbody {
+  background-color: gainsboro;
 }
 
 img {
   max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.memes-col__image {
+  width: 20%;
+}
+.memes-col__name {
+  width: 30%;
+}
+.memes-col__link {
+  width: 30%;
+}
+.memes-col__width,
+.memes-col__height {
+  width: 10%;
 }

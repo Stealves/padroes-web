@@ -25,19 +25,19 @@ function prepareMemes() {
     });
 
     function createMemesList(memeName, memeUrl, memeWidth, memeHeight) {
-      let li = document.createElement("li");
-      li.classList.add("meme-list__item");
+      let tr = document.createElement("tr");
+      tr.classList.add("meme-list__item");
 
       let newMeme =`
-        <img class="meme__img" src="${memeUrl}" alt="${memeName}">
-        <span class="meme__name">${memeName}</span>
-        <a href="${memeUrl}" class="meme__link">${memeUrl}</a>
-        <span class="meme__measurement">${memeWidth}</span>
-        <span class="meme__measurement">${memeHeight}</span>
+        <td><img src="${memeUrl}" alt="${memeName}"></td>
+        <td><span>${memeName}</span></td>
+        <td><a href="${memeUrl}" target="_blank">${memeUrl}</a></td>
+        <td><span>${memeWidth}</span></td>
+        <td><span>${memeHeight}</span></td>
       `;
 
-      li.innerHTML = newMeme;
-      memeList.appendChild(li);
+      tr.innerHTML = newMeme;
+      memeList.appendChild(tr);
     }
   }
 }
