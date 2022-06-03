@@ -42,7 +42,7 @@ function prepareMemes() {
   }
 }
 
-// With great help of the article:https://www.kirupa.com/html5/shuffling_array_js.htm
+// With great help from the article:https://www.kirupa.com/html5/shuffling_array_js.htm
 // Shuffle as an array prototype
 // Array.prototype.shuffle = function () {
 //   let input = this;

@@ -14,9 +14,12 @@ thead {
   border-bottom: 2px solid gray;
 }
 
-thead th,
-tbody td {
+thead th {
   padding: 10px;
+}
+
+tbody td {
+  padding: 20px;
 }
 
 tbody {
@@ -30,13 +33,13 @@ img {
 }
 
 .memes-col__image {
-  width: 20%;
+  width: 15%;
 }
 .memes-col__name {
-  width: 30%;
+  width: 20%;
 }
 .memes-col__link {
-  width: 30%;
+  width: 35%;
 }
 .memes-col__width,
 .memes-col__height {
