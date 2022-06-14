@@ -17,16 +17,22 @@ function getReport() {
   }
 }
 
+infoInput.forEach(input => {
+  input.addEventListener('change', (e) => {
+    const isValid = e.target.reportValidity();
+    e.target.setAttribute('aria-invalid', !isValid);
+  });
+});
+
 function addReport() {
-  // for (let i = 0; i < infoInput.length; i++) {
-  //   if (infoInput[i].value == null) {
-  //     alert("Preencha todos os campos");
-  //     return;
-  //   }
-  // }
-  // Calculate total and average
   let gradeTotal = sumTotal(grade);
   let gradeAverage = Math.floor(sumTotal(grade)/ grade.length);
+
+  // Validate input values
+  if (gradeAverage > 100) {
+    alert("Dados Invalidos");
+    return;
+  }
 
   // Test result
   let result;

@@ -106,6 +106,10 @@ input {
   border-radius: 0.3em;
 }
 
+input[aria-invalid="true"] {
+  border-color: red;
+}
+
 .button--container {
   text-align: center;
 }
