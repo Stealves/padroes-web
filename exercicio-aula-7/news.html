@@ -38,7 +38,7 @@
     <div class="row">
       <main class="col-8 gx-3">
         <article>
-          <img src="https://via.placeholder.com/700x350" alt="">
+          <img src="https://via.placeholder.com/700x350" class="img-fluid" alt="">
           <div>
             <p id="news-date"><small class="text-muted">Date</small></p>
             <h2 id="news-title">Article Title</h2>
@@ -53,8 +53,8 @@
           </div>
           <div class="card-body">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Insira sua pesquisa..." aria-label="Pesquisa" aria-describedby="button-addon2">
-              <button class="btn btn-primary" type="button" id="button-addon2">Pesquisar</button>
+              <input type="text" id="search" class="form-control" placeholder="Insira sua pesquisa..." aria-label="Pesquisa" aria-describedby="search-btn">
+              <button class="btn btn-primary" type="button" id="search-btn">Pesquisar</button>
             </div>
           </div>
         </div>
@@ -62,8 +62,9 @@
           <div class="card-header">
             Categorias
           </div>
-          <div class="card-body">
-            <p>With supporting text below as a natural lead-in to additional content.</p>
+          <div id="tag-list" class="card-body">
+            <ul class="list-group">
+            </ul>
           </div>
         </div>
       </aside>
