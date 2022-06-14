@@ -1,8 +1,5 @@
-const currentPage = document.body.id;
 const paramsUrl = new URLSearchParams(document.location.search);
 const newsFormFieldsBtn = document.querySelector("#add-news-form button");
-const newsSearchInput = document.getElementById("search");
-const newsSearchBtn = document.getElementById("search-btn");
 const allInputs = document.querySelectorAll(".news-input");
 const today  = new Date();
 
@@ -13,32 +10,34 @@ if (localStorage.getItem("News") === null) {
   newsList = JSON.parse(localStorage.getItem("News"));
 }
 
-loadEventListeners();
+function homeLoaded() {
+  loadNewsList();
+  loadTags();
 
-function loadEventListeners() {
-  switch (currentPage) {
-    case "home":
-      if (paramsUrl.get("search")) {
-        document.addEventListener("DOMContentLoaded", function() {
-          newsSearchInput.value = paramsUrl.get("search");
-          filterNews();
-        });
-      }
-      document.addEventListener("DOMContentLoaded", loadNewsList);
-      document.addEventListener("DOMContentLoaded", loadTags);
-      newsSearchInput.addEventListener("keyup", filterNews);
-      break;
-    case "news":
-      document.addEventListener("DOMContentLoaded", loadNews);
-      document.addEventListener("DOMContentLoaded", loadTags);
-      newsSearchBtn.addEventListener("click", () => {
-        window.location = `/exercicio-aula-7/index.html?search=${newsSearchInput.value}`;
-      });
-      break;
-    case "add-news":
-      newsFormFieldsBtn.addEventListener("click", saveNews);
-      break;
+  const newsSearchInput = document.getElementById("search");
+  newsSearchInput.addEventListener("keyup", function() {
+    filterNews(newsSearchInput);
+  });
+
+  if (paramsUrl.get("search")) {
+    newsSearchInput.value = paramsUrl.get("search");
+    filterNews(newsSearchInput);
   }
+}
+
+function newsLoaded() {
+  const newsSearchBtn = document.getElementById("search-btn");
+  const newsSearchInput = document.getElementById("search");
+
+  newsSearchBtn.addEventListener("click", () => {
+    window.location = `/exercicio-aula-7/index.html?search=${newsSearchInput.value}`;
+  });
+  loadNews();
+  loadTags();   
+}
+
+function addNewsLoaded() {
+  newsFormFieldsBtn.addEventListener("click", saveNews);
 }
 
 function loadNewsList() {
@@ -152,12 +151,12 @@ function loadTags() {
   }
 }
 
-function filterNews() {
-  const filterValue = newsSearchInput.value.toLowerCase();
+function filterNews(input) {
+  const filterValue = input.value.toLowerCase();
   const allListedNews = document.querySelectorAll("#news-grid article");
-  const filterAlert = document.querySelector("#news-grid .alert");
-
+  
   if (filterValue.length > 1) {
+    
     allListedNews.forEach(listedNews => {
       listedNews.parentElement.classList.add("hide");
     });
@@ -176,19 +175,26 @@ function filterNews() {
       };
     });
 
-    if (filterResults.length === 0) {
-      filterAlert.innerHTML = `Nenhum resultado para <span class="fw-bold">${filterValue}</span>`;
-      filterAlert.classList.remove("hide");
-      filterAlert.classList.add("show");
-    } else {
-      filterAlert.innerHTML = "";
-      filterAlert.classList.add("hide");
-      filterAlert.classList.remove("show");
-    }
+    showHideAlert(filterResults.length === 0, `Nenhum resultado para <span class="fw-bold">${filterValue}</span>`);
   } else {
     allListedNews.forEach(listedNews => {
       listedNews.parentElement.classList.remove("hide");
     });
+    showHideAlert(false, "");
+  }
+}
+
+function showHideAlert(show, message) {
+  const filterAlert = document.querySelector("#news-grid .alert");
+
+  if (show) {
+    filterAlert.innerHTML = message;
+    filterAlert.classList.remove("hide");
+    filterAlert.classList.add("show");
+  } else {
+    filterAlert.innerHTML = message;
+    filterAlert.classList.add("hide");
+    filterAlert.classList.remove("show");
   }
 }
 
