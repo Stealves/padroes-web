@@ -11,29 +11,41 @@ if (localStorage.getItem("News") === null) {
 }
 
 function homeLoaded() {
+  const newsSearchInput = document.getElementById("search");
+  const tagList = document.querySelector("#tag-list ul");
+
   loadNewsList();
   loadTags();
 
-  const newsSearchInput = document.getElementById("search");
   newsSearchInput.addEventListener("keyup", function() {
     filterNews(newsSearchInput);
   });
-
   if (paramsUrl.get("search")) {
     newsSearchInput.value = paramsUrl.get("search");
     filterNews(newsSearchInput);
+  }
+  tagList.addEventListener("click", function(e) {
+    tagfilterNews(e.target.textContent);
+  });
+  if (paramsUrl.get("tag")) {
+    tagfilterNews(paramsUrl.get("tag"));
   }
 }
 
 function newsLoaded() {
   const newsSearchBtn = document.getElementById("search-btn");
   const newsSearchInput = document.getElementById("search");
+  const tagList = document.querySelector("#tag-list ul");
+
+  loadNews();
+  loadTags();
 
   newsSearchBtn.addEventListener("click", () => {
     window.location = `/exercicio-aula-7/index.html?search=${newsSearchInput.value}`;
   });
-  loadNews();
-  loadTags();   
+  tagList.addEventListener("click", (e) => {
+    window.location = `/exercicio-aula-7/index.html?tag=${e.target.textContent}`;
+  });
 }
 
 function addNewsLoaded() {
@@ -43,7 +55,7 @@ function addNewsLoaded() {
 function loadNewsList() {
   const newsGrid = document.getElementById("news-grid");
 
-  if (localStorage.getItem("News") === null) {
+  if (newsList.length === 0) {
     document.querySelector("main").innerHTML =  `
       <div class="alert alert-secondary" role="alert">
         <h3 class="alert-heading">Nenhuma noticia foi salva</h3>
@@ -108,6 +120,8 @@ function loadNews() {
 
   const newsId = paramsUrl.get("id");
   const currentNews = newsList.find(news => news.id === newsId);
+
+  document.querySelector("title").textContent = `Tech News - ${currentNews.title}`;
 
   newsHeader.textContent = currentNews.title;
   newsTitle.textContent = currentNews.title;
@@ -182,6 +196,38 @@ function filterNews(input) {
     });
     showHideAlert(false, "");
   }
+}
+
+function tagfilterNews(filterValue) {
+  const allListedNews = document.querySelectorAll("#news-grid article");
+  const allListedTags = document.querySelectorAll("#tag-list ul li");
+
+  allListedTags.forEach(listedTag => {
+    if (listedTag.textContent === filterValue) {
+      listedTag.classList.add("active");
+    } else {
+      listedTag.classList.remove("active");
+    }
+  });
+  
+  allListedNews.forEach(listedNews => {
+    listedNews.parentElement.classList.add("hide");
+  });
+
+  const filterResults = newsList.filter(news => {
+    let tags = news.tags;
+
+    if (tags.includes(filterValue)) {
+      allListedNews.forEach(listedNews => {
+        if (news.id === listedNews.id) {
+          listedNews.parentElement.classList.remove("hide");
+        }
+      });
+      return news;
+    };
+  });
+
+  showHideAlert(filterResults.length === 0, `Nenhum resultado para <span class="fw-bold">${filterValue}</span>`);
 }
 
 function showHideAlert(show, message) {

@@ -1,3 +1,7 @@
 #news-grid .hide {
   display: none;
 }
+
+#tag-list ul li {
+  cursor: pointer;
+}
