@@ -66,16 +66,24 @@ function loadNewsList() {
   } else {
     newsList.forEach(news => {
       let newNews = document.createElement("div");
+      let newsTags = news.tags;
+      let tags = "";
+      newsTags.forEach((tag, index) => {
+        tags = index != 0 ? tags + " | " + tag : tag;
+      });
 
       newNews.classList.add("col");
       newNews.innerHTML = `
-        <article id="${news.id}" class="card">
+        <article id="${news.id}" class="card h-100">
           <img src="https://via.placeholder.com/700x350" alt="" class="card-img-top">
           <div class="card-body">
             <p class="card-text"><small class="text-muted">${news.date}</small></p>
             <h3 class="card-title">${news.title.substring(0, 50)}</h3>
             <p class="card-text">${news.content.substring(0, 150)}...</p>
             <a href="/exercicio-aula-7/news.html?id=${news.id}" class="btn btn-primary">Ver mais</a>
+          </div>
+          <div class="card-footer bg-transparent">
+            <small class="text-muted">${tags}</small>
           </div>
         </article>
       `;
@@ -113,17 +121,24 @@ function saveNews(e) {
 }
 
 function loadNews() {
-  const newsHeader = document.getElementById("news-header")
-  const newsDate = document.querySelector("#news-date small");
+  const newsHeader = document.getElementById("news-header");
+  const newsTags = document.getElementById("news-tags");
+  const newsDate = document.getElementById("news-date");
   const newsTitle = document.getElementById("news-title");
   const newsContent = document.getElementById("news-content");
 
   const newsId = paramsUrl.get("id");
   const currentNews = newsList.find(news => news.id === newsId);
+  let currentNewsTags = currentNews.tags;
+  let tags = "";
+  currentNewsTags.forEach((tag, index) => {
+    tags = index != 0 ? tags + " | " + tag : tag;
+  });
 
   document.querySelector("title").textContent = `Tech News - ${currentNews.title}`;
 
   newsHeader.textContent = currentNews.title;
+  newsTags.textContent = tags;
   newsTitle.textContent = currentNews.title;
   newsDate.textContent = currentNews.date;
   newsContent.innerHTML = currentNews.content;
